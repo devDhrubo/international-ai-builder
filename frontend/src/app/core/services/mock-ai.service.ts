@@ -48,7 +48,7 @@ export class MockAiService {
         .join('\n');
 
       return {
-        answer: `**Similar High-Signal Transactions to ${txn.id}**\n\nFound **${similar.length}** comparable records sharing transaction type (\`${txn.type}\`) or risk band:\n\n${listStr}\n\nNotice: These patterns are derived from the local FraudShield mock dataset and have not been executed against any external banking system.`,
+        answer: `**Similar High-Signal Transactions to ${txn.id}**\n\nFound **${similar.length}** comparable records sharing transaction type (\`${txn.type}\`) or risk band:\n\n${listStr}\n\nNotice: These patterns are derived from the local Silicon-One Fraudshield mock dataset and have not been executed against any external banking system.`,
         referencedTxnIds: [txn.id, ...similar.map((s) => s.id)],
         followUps: ['Summarize this fraud ring', 'Generate an investigation report', `Why was ${similar[0]?.id ?? txn.id} flagged?`],
       };
@@ -70,7 +70,7 @@ export class MockAiService {
     if (q.includes('report')) {
       const linkedCase = cases.find((c) => c.transactionId === txn.id) ?? cases[0];
       return {
-        answer: `**FraudShield Investigation Brief (Simulated)**\n\n• **Case Reference:** ${linkedCase?.id ?? 'N/A'} (${linkedCase?.status ?? 'New'})\n• **Primary Transaction:** ${txn.id} — $${txn.amount.toLocaleString()} ${txn.type}\n• **Originating Account:** ${txn.senderAccount} (${txn.senderName})\n• **Beneficiary:** ${txn.receiverAccount} (${txn.receiverName})\n• **Geo / Device:** ${txn.location.city}, ${txn.location.country} | ${txn.device.deviceId} (${txn.device.os})\n• **Composite Score:** ${txn.prediction.riskScore}/100 (${txn.prediction.riskLevel.toUpperCase()})\n\n**Executive Finding:** ${txn.explanation.reasonCode.narrative}\n\n**Next Step:** ${txn.explanation.reasonCode.recommendedAction}`,
+        answer: `**Silicon-One Fraudshield Investigation Brief (Simulated)**\n\n• **Case Reference:** ${linkedCase?.id ?? 'N/A'} (${linkedCase?.status ?? 'New'})\n• **Primary Transaction:** ${txn.id} — $${txn.amount.toLocaleString()} ${txn.type}\n• **Originating Account:** ${txn.senderAccount} (${txn.senderName})\n• **Beneficiary:** ${txn.receiverAccount} (${txn.receiverName})\n• **Geo / Device:** ${txn.location.city}, ${txn.location.country} | ${txn.device.deviceId} (${txn.device.os})\n• **Composite Score:** ${txn.prediction.riskScore}/100 (${txn.prediction.riskLevel.toUpperCase()})\n\n**Executive Finding:** ${txn.explanation.reasonCode.narrative}\n\n**Next Step:** ${txn.explanation.reasonCode.recommendedAction}`,
         referencedTxnIds: [txn.id],
         followUps: ['Find suspicious accounts connected to this transaction', 'Show me similar cases'],
       };
@@ -79,7 +79,7 @@ export class MockAiService {
     // Default contextual answer
     const highRiskCount = txns.filter((t) => t.prediction.riskScore >= 70).length;
     return {
-      answer: `**FraudShield Copilot Context**\n\nCurrently monitoring **${txns.length}** active stream transactions (**${highRiskCount}** high/critical risk) and **${cases.length}** investigation cases.\n\nFor selected transaction **${txn.id}** ($${txn.amount.toLocaleString()}, Risk **${txn.prediction.riskScore}/100**): ${txn.explanation.summary}`,
+      answer: `**Silicon-One Fraudshield Copilot Context**\n\nCurrently monitoring **${txns.length}** active stream transactions (**${highRiskCount}** high/critical risk) and **${cases.length}** investigation cases.\n\nFor selected transaction **${txn.id}** ($${txn.amount.toLocaleString()}, Risk **${txn.prediction.riskScore}/100**): ${txn.explanation.summary}`,
       referencedTxnIds: [txn.id],
       followUps: [`Why was ${txn.id} flagged?`, 'Summarize this fraud ring', 'Generate an investigation report'],
     };

@@ -15,7 +15,7 @@ import { AuthService } from '../../../core/auth/services/auth.service';
       <div class="fs-card p-7 sm:p-8 border-white/10 space-y-6">
         <div>
           <h2 class="font-display text-2xl font-bold text-white">Welcome back</h2>
-          <p class="text-xs sm:text-sm text-zinc-400 mt-1">Sign in to your FraudShield workspace.</p>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">Sign in to your Silicon-One Fraudshield workspace.</p>
         </div>
 
         @if (errorMessage()) {

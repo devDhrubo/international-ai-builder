@@ -160,7 +160,7 @@ interface ChatMessage {
               type="text"
               [(ngModel)]="draftPrompt"
               name="draftPrompt"
-              placeholder="Ask FraudShield Copilot about any transaction, mule cluster, or risk signal..."
+              placeholder="Ask Silicon-One Fraudshield Copilot about any transaction, mule cluster, or risk signal..."
               class="flex-1 px-4 py-2.5 rounded-xl bg-[#10111D] border border-white/10 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500/50"
             />
             <button
@@ -220,7 +220,7 @@ interface ChatMessage {
           <div class="p-4 rounded-xl bg-amber-500/8 border border-amber-500/20 text-[11px] text-amber-200/90 flex items-start gap-2.5">
             <lucide-icon [img]="AlertIcon" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <span>
-              All Copilot responses are synthesized from the local FraudShield mock dataset. No real bank or external API calls are executed.
+              All Copilot responses are synthesized from the local Silicon-One Fraudshield mock dataset. No real bank or external API calls are executed.
             </span>
           </div>
         </div>
@@ -261,7 +261,7 @@ export class AnalystCopilotComponent {
       id: 'MSG-0',
       role: 'assistant',
       content:
-        'Hello Analyst. I am connected to the live FraudShield mock telemetry store. Select any transaction context or click a suggested prompt above to begin.',
+        'Hello Analyst. I am connected to the live Silicon-One Fraudshield mock telemetry store. Select any transaction context or click a suggested prompt above to begin.',
       timestamp: new Date().toISOString(),
       referencedTxnIds: ['TXN-4821'],
     },

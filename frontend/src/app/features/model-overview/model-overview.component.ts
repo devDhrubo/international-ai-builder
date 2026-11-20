@@ -35,7 +35,7 @@ import { ARTIFACT_MODEL_BENCHMARKS } from '../../core/data/mock-seed.data';
           <div class="space-y-2.5 text-xs">
             <div class="flex justify-between py-2 border-b border-white/6">
               <span class="text-zinc-400">Model Name</span>
-              <span class="font-semibold text-white">FraudShield Hybrid Ensemble</span>
+              <span class="font-semibold text-white">Silicon-One Fraudshield Hybrid Ensemble</span>
             </div>
             <div class="flex justify-between py-2 border-b border-white/6">
               <span class="text-zinc-400">Architecture</span>

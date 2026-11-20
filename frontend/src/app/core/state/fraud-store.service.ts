@@ -159,6 +159,21 @@ export class FraudStoreService {
     });
   }
 
+  upsertSimulationTransaction(txn: Transaction): void {
+    this.transactions.update((curr) => {
+      const idx = curr.findIndex((t) => t.id === txn.id);
+      let updated: Transaction[];
+      if (idx >= 0) {
+        updated = [...curr];
+        updated[idx] = { ...txn, isNew: true };
+      } else {
+        updated = [{ ...txn, isNew: true }, ...curr].slice(0, 200);
+      }
+      this.transactions$.next(updated);
+      return updated;
+    });
+  }
+
   updateTransactionStatus(id: string, status: TransactionStatus, actor = 'Maya Lin'): void {
     this.transactions.update((list) => {
       const updated = list.map((t) =>

@@ -36,7 +36,7 @@ import { RouterModule } from '@angular/router';
           </div>
           <div>
             <span class="font-display font-bold text-lg tracking-tight text-white">
-              Fraud<span class="text-purple-400">Shield</span>
+              Silicon-One <span class="text-purple-400">Fraudshield</span>
             </span>
             <span class="block text-[10px] tracking-widest uppercase text-zinc-500">Financial Intelligence</span>
           </div>

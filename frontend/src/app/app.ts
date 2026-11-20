@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DynamicCursorComponent } from './shared/components/dynamic-cursor.component';
+import { SimulationDashboardBridgeService } from './core/services/simulation-dashboard-bridge.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,6 @@ import { DynamicCursorComponent } from './shared/components/dynamic-cursor.compo
     <router-outlet />
   `,
 })
-export class App {}
+export class App {
+  private readonly _simBridge = inject(SimulationDashboardBridgeService);
+}

@@ -32,7 +32,7 @@ import { AuthService } from '../../../core/auth/services/auth.service';
             {{
               verified()
                 ? 'Your email address has been confirmed. You can now proceed to your workspace.'
-                : 'Confirm the email address associated with your FraudShield account:'
+                : 'Confirm the email address associated with your Silicon-One Fraudshield account:'
             }}
           </p>
           <p class="font-mono-num text-sm font-semibold text-purple-300 mt-2">{{ displayEmail() }}</p>

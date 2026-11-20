@@ -34,7 +34,7 @@ import { IndustryType, OrganizationSize } from '../../../core/auth/models/organi
     <app-auth-layout>
       <div class="fs-card p-7 sm:p-8 border-white/10 space-y-6">
         <div>
-          <h2 class="font-display text-2xl font-bold text-white">Create your FraudShield account</h2>
+          <h2 class="font-display text-2xl font-bold text-white">Create your Silicon-One Fraudshield account</h2>
           <p class="text-xs sm:text-sm text-zinc-400 mt-1">
             Start building a smarter financial security workflow.
           </p>
@@ -172,7 +172,7 @@ import { IndustryType, OrganizationSize } from '../../../core/auth/models/organi
                 </div>
                 <label class="flex items-start gap-2.5 text-xs text-zinc-400 pt-1 cursor-pointer">
                   <input type="checkbox" [(ngModel)]="ind.terms" class="accent-purple-500 mt-0.5" />
-                  <span>I accept the FraudShield Terms of Service and Privacy Policy.</span>
+                  <span>I accept the Silicon-One Fraudshield Terms of Service and Privacy Policy.</span>
                 </label>
               </div>
             }
@@ -245,7 +245,7 @@ import { IndustryType, OrganizationSize } from '../../../core/auth/models/organi
                 </div>
                 <label class="flex items-start gap-2.5 text-xs text-zinc-400 pt-1 cursor-pointer">
                   <input type="checkbox" [(ngModel)]="org.terms" class="accent-purple-500 mt-0.5" />
-                  <span>I accept the FraudShield Enterprise Terms and Data Processing Addendum.</span>
+                  <span>I accept the Silicon-One Fraudshield Enterprise Terms and Data Processing Addendum.</span>
                 </label>
               </div>
             }

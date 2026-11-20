@@ -41,7 +41,7 @@ class LocalAuthAdapter implements AuthAdapter {
     if (request.password === 'invalid' || normalizedEmail === 'invalid@fraudshield.ai') {
       return {
         success: false,
-        message: 'The credentials provided do not match an active FraudShield account.',
+        message: 'The credentials provided do not match an active Silicon-One Fraudshield account.',
       };
     }
 

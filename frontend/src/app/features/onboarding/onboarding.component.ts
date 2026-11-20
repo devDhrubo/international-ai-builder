@@ -32,7 +32,7 @@ import { Role } from '../../core/auth/models/user.model';
         <!-- Brand Header -->
         <div class="flex items-center justify-between">
           <a routerLink="/" class="font-display font-bold text-lg text-white">
-            Fraud<span class="text-purple-400">Shield</span>
+            Silicon-One <span class="text-purple-400">Fraudshield</span>
           </a>
           <span class="text-xs text-zinc-400 font-mono-num">Workspace Setup • Step {{ step() }} of 4</span>
         </div>
@@ -62,7 +62,7 @@ import { Role } from '../../core/auth/models/user.model';
               </div>
               <div>
                 <h2 class="font-display text-xl font-bold text-white">Organization Profile</h2>
-                <p class="text-xs text-zinc-400">Configure your institution's identity in FraudShield.</p>
+                <p class="text-xs text-zinc-400">Configure your institution's identity in Silicon-One Fraudshield.</p>
               </div>
             </div>
 
@@ -222,7 +222,7 @@ import { Role } from '../../core/auth/models/user.model';
               </div>
               <h2 class="font-display text-3xl font-bold text-white">Your workspace is ready.</h2>
               <p class="text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-                Your FraudShield workspace has been configured. Access your financial intelligence command center.
+                Your Silicon-One Fraudshield workspace has been configured. Access your financial intelligence command center.
               </p>
               <button
                 type="button"

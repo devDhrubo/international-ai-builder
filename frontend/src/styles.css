@@ -222,6 +222,10 @@ input[type="range"].fs-slider::-webkit-slider-thumb:hover {
   font-family: 'Inter', sans-serif !important;
 }
 
+.leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(180deg) brightness(92%) contrast(90%) saturate(75%);
+}
+
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
   background: #151626 !important;
@@ -240,6 +244,25 @@ input[type="range"].fs-slider::-webkit-slider-thumb:hover {
 .leaflet-control-zoom a:hover {
   background: #151626 !important;
   color: #A855F7 !important;
+}
+
+@keyframes stagePop {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.6;
+  }
+  65% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-stage-pop {
+  animation: stagePop 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

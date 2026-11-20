@@ -1,0 +1,201 @@
+const INITIAL_BANKS = [
+  {
+    bankId: 'ABC_BANK',
+    name: 'ABC Bank Limited',
+    shortName: 'ABC Bank',
+    swiftCode: 'ABCBBD22',
+    country: 'BD',
+    accentColor: '#A855F7',
+  },
+  {
+    bankId: 'XYZ_BANK',
+    name: 'XYZ Bank Limited',
+    shortName: 'XYZ Bank',
+    swiftCode: 'XYZBBD22',
+    country: 'BD',
+    accentColor: '#06B6D4',
+  },
+];
+
+const INITIAL_CUSTOMERS = [
+  {
+    customerId: 'CUST-A',
+    customerName: 'Aarav Rahman',
+    bankId: 'ABC_BANK',
+    bankName: 'ABC Bank Limited',
+    accountRef: 'ABC-1001-8841',
+    balance: 250000,
+    currency: 'BDT',
+    status: 'ACTIVE',
+    dailyLimit: 500000,
+    simulatedPin: '1234',
+    simulatedOtp: '482910',
+    baseBehaviorHistory: [
+      'API_SESSION_START',
+      'API_AUTH_MFA_PASS',
+      'API_ACCOUNT_SUMMARY_VIEW',
+      'API_STATEMENT_LIST',
+      'API_BENEFICIARY_LIST_VIEW',
+    ],
+  },
+  {
+    customerId: 'CUST-B',
+    customerName: 'Nadia Karim',
+    bankId: 'XYZ_BANK',
+    bankName: 'XYZ Bank Limited',
+    accountRef: 'XYZ-2004-3190',
+    balance: 180000,
+    currency: 'BDT',
+    status: 'ACTIVE',
+    dailyLimit: 500000,
+    simulatedPin: '1234',
+    simulatedOtp: '482910',
+    baseBehaviorHistory: [
+      'API_SESSION_START',
+      'API_AUTH_BIOMETRIC_PASS',
+      'API_ACCOUNT_SUMMARY_VIEW',
+      'API_BILL_PAY_HISTORY',
+    ],
+  },
+  {
+    customerId: 'CUST-C',
+    customerName: 'Tanvir Hossain',
+    bankId: 'ABC_BANK',
+    bankName: 'ABC Bank Limited',
+    accountRef: 'ABC-1009-5520',
+    balance: 420000,
+    currency: 'BDT',
+    status: 'ACTIVE',
+    dailyLimit: 750000,
+    simulatedPin: '1234',
+    simulatedOtp: '482910',
+    baseBehaviorHistory: [
+      'API_SESSION_START',
+      'API_AUTH_MFA_PASS',
+      'API_SAVINGS_BALANCE_CHECK',
+      'API_BENEFICIARY_VERIFIED',
+    ],
+  },
+  {
+    customerId: 'CUST-D',
+    customerName: 'Farhana Chowdhury',
+    bankId: 'XYZ_BANK',
+    bankName: 'XYZ Bank Limited',
+    accountRef: 'XYZ-2088-7712',
+    balance: 95000,
+    currency: 'BDT',
+    status: 'ACTIVE',
+    dailyLimit: 300000,
+    simulatedPin: '1234',
+    simulatedOtp: '482910',
+    baseBehaviorHistory: [
+      'API_SESSION_START',
+      'API_AUTH_PASSWORD_PASS',
+      'API_ACCOUNT_SUMMARY_VIEW',
+    ],
+  },
+];
+
+const TEST_SCENARIOS = [
+  {
+    id: 'normal_banking',
+    name: 'Normal Banking Activity',
+    category: 'Legitimate Baseline',
+    description:
+      'Standard authenticated session with balance check, verified beneficiary lookup, and single transfer initiation.',
+    suggestedAmount: 5000,
+    behavioralEvents: [
+      'API_LOGIN_TRUSTED_DEVICE',
+      'API_BALANCE_INQUIRY',
+      'API_RECENT_TXN_VIEW',
+      'API_BENEFICIARY_SELECT_VERIFIED',
+      'API_TRANSFER_REVIEW',
+    ],
+  },
+  {
+    id: 'unusual_transfer',
+    name: 'Unusual Transfer Activity',
+    category: 'Velocity & Deviation',
+    description:
+      'Abrupt session from unrecognized endpoint, skipped balance verification, rapid transfer probe sequence.',
+    suggestedAmount: 50000,
+    behavioralEvents: [
+      'API_LOGIN_NEW_IP_PROXY',
+      'API_DEVICE_FINGERPRINT_MISMATCH',
+      'API_SKIP_BALANCE_CHECK',
+      'API_LIMIT_PROBE',
+      'API_RAPID_TRANSFER_INIT',
+      'API_TRANSFER_RETRY',
+    ],
+  },
+  {
+    id: 'multiple_beneficiary',
+    name: 'Multiple Beneficiary Changes',
+    category: 'Account Manipulation',
+    description:
+      'Repeated beneficiary additions, edits, and deletions immediately preceding an outbound inter-bank transfer.',
+    suggestedAmount: 50000,
+    behavioralEvents: [
+      'API_LOGIN_NEW_DEVICE',
+      'API_BENEFICIARY_ADD',
+      'API_BENEFICIARY_DELETE',
+      'API_BENEFICIARY_ADD',
+      'API_BENEFICIARY_MODIFY_ROUTING',
+      'API_BENEFICIARY_ADD_EXTERNAL',
+      'API_TRANSFER_INIT_IMMEDIATE',
+    ],
+  },
+  {
+    id: 'repeated_attempts',
+    name: 'Repeated Transfer Attempts',
+    category: 'Brute / Retry Burst',
+    description:
+      'Multiple failed PIN/OTP challenges and aborted transfer submissions in quick succession.',
+    suggestedAmount: 50000,
+    behavioralEvents: [
+      'API_TRANSFER_ATTEMPT_FAIL_LIMIT',
+      'API_PIN_VERIFY_FAIL',
+      'API_PIN_VERIFY_FAIL',
+      'API_OTP_RESEND_BURST',
+      'API_TRANSFER_ATTEMPT_FAIL_AUTH',
+      'API_TRANSFER_RETRY_BURST',
+    ],
+  },
+  {
+    id: 'unusual_session',
+    name: 'Unusual Account Session',
+    category: 'Session Anomaly',
+    description:
+      'Credential reset, phone/email contact change, new device registration, and immediate outbound transfer.',
+    suggestedAmount: 50000,
+    behavioralEvents: [
+      'API_PASSWORD_RESET_REQUEST',
+      'API_PASSWORD_CHANGE_COMPLETE',
+      'API_PROFILE_CONTACT_UPDATE',
+      'API_DEVICE_TRUST_OVERRIDE',
+      'API_SESSION_TOKEN_REFRESH_ANOMALY',
+      'API_EXTERNAL_WIRE_INIT',
+    ],
+  },
+  {
+    id: 'high_value_transfer',
+    name: 'High-Value Transfer',
+    category: 'Amount & Limit Escalation',
+    description:
+      'High-value transfer following daily limit inquiry, temporary limit bump attempt, and external beneficiary setup.',
+    suggestedAmount: 150000,
+    behavioralEvents: [
+      'API_DAILY_LIMIT_CHECK',
+      'API_LIMIT_INCREASE_REQUEST',
+      'API_BENEFICIARY_ADD_UNVERIFIED',
+      'API_HIGH_VALUE_TRANSFER_INIT',
+      'API_BYPASS_COOLING_PERIOD_ATTEMPT',
+    ],
+  },
+];
+
+module.exports = {
+  INITIAL_BANKS,
+  INITIAL_CUSTOMERS,
+  TEST_SCENARIOS,
+};

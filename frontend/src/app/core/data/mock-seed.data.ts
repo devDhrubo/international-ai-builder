@@ -380,10 +380,10 @@ export function createInitialCases(txns: Transaction[]): FraudCase[] {
       timeline: [
         {
           id: `TL-${idx}-1`,
-          title: 'Case Auto-Created by FraudShield Engine',
+          title: 'Case Auto-Created by Silicon-One Fraudshield Engine',
           detail: `Triggered by ${t.id} exceeding risk threshold (${t.prediction.riskScore}/100).`,
           timestamp: t.timestamp,
-          actor: 'FraudShield AI',
+          actor: 'Silicon-One Fraudshield AI',
         },
       ],
       decisions: [],
@@ -449,8 +449,8 @@ export function createInitialActivities(): ActivityItem[] {
       id: 'ACT-1',
       type: 'decision',
       title: 'Blocked TXN-4821 ($18,450)',
-      detail: 'Auto-blocked by FraudShield Ensemble v3.4; escalated to CASE-2041.',
-      actor: 'FraudShield Engine',
+      detail: 'Auto-blocked by Silicon-One Fraudshield Ensemble v3.4; escalated to CASE-2041.',
+      actor: 'Silicon-One Fraudshield Engine',
       timestamp: new Date(now - 2 * 60 * 1000).toISOString(),
     },
     {

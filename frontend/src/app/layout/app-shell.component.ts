@@ -99,7 +99,7 @@ interface NavGroup {
       >
         <!-- Brand Header -->
         <div class="h-16 px-4 flex items-center justify-between border-b border-white/8 shrink-0">
-          <a routerLink="/" class="flex items-center gap-3 overflow-hidden" title="Back to FraudShield Home">
+          <a routerLink="/" class="flex items-center gap-3 overflow-hidden" title="Back to Silicon-One Fraudshield Home">
             <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-500 p-[1px] shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
               <div class="w-full h-full rounded-[11px] bg-[#080913] flex items-center justify-center">
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none">
@@ -121,8 +121,8 @@ interface NavGroup {
             </div>
             @if (!collapsed()) {
               <div class="min-w-0">
-                <div class="font-display font-bold text-base tracking-tight text-white flex items-center gap-1.5">
-                  Fraud<span class="text-purple-400">Shield</span>
+                <div class="font-display font-bold text-sm tracking-tight text-white flex items-center gap-1">
+                  Silicon-One <span class="text-purple-400">Fraudshield</span>
                 </div>
                 <p class="text-[10px] text-zinc-500 truncate">Explainable Fraud AI</p>
               </div>
@@ -209,7 +209,7 @@ interface NavGroup {
             </button>
 
             <div class="hidden sm:flex items-center gap-2 text-xs">
-              <span class="text-zinc-500">FraudShield</span>
+              <span class="text-zinc-500">Silicon-One Fraudshield</span>
               <span class="text-zinc-600">/</span>
               <span class="text-zinc-400">{{ currentBreadcrumb().group }}</span>
               <span class="text-zinc-600">/</span>

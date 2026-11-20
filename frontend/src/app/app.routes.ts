@@ -190,5 +190,38 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'simulation',
+    loadComponent: () =>
+      import('./features/simulation/one-screen-transfer.component').then(
+        (m) => m.OneScreenTransferComponent
+      ),
+  },
+  {
+    path: 'simulation/customer',
+    loadComponent: () =>
+      import('./features/simulation/customer-app.component').then((m) => m.CustomerAppComponent),
+  },
+  {
+    path: 'simulation/monitor',
+    loadComponent: () =>
+      import('./features/simulation/central-monitor.component').then(
+        (m) => m.CentralMonitorComponent
+      ),
+  },
+  {
+    path: 'simulation/bank',
+    loadComponent: () =>
+      import('./features/simulation/bank-dashboard.component').then(
+        (m) => m.BankDashboardComponent
+      ),
+  },
+  {
+    path: 'simulation/control',
+    loadComponent: () =>
+      import('./features/simulation/presenter-control.component').then(
+        (m) => m.PresenterControlComponent
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];
